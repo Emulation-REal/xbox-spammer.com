@@ -4,323 +4,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XBOX API DASHBOARD PRO</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    :root {
-      --bg: #0a0a0a;
-      --panel: #111;
-      --accent: #ef4444;
-      --text: #ef4444;
-      --text-dim: #888;
-      --border: #ef4444;
-      --hover: #cc0000;
-      --success: #10b981;
-      --warning: #f59e0b;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Roboto Mono', monospace; background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
-    #matrix { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.3; }
-
-    .sidebar { width: 280px; background: var(--panel); border-right: 2px solid var(--border); padding: 20px 0; overflow-y: auto; box-shadow: 5px 0 15px rgba(239, 68, 68, 0.2); }
-    .logo { text-align: center; margin-bottom: 30px; font-family: 'Orbitron', sans-serif; font-size: 1.8em; color: var(--accent); text-shadow: 0 0 10px var(--accent); }
-    .tab-group { margin-bottom: 20px; }
-    .tab-group h3 { padding: 10px 20px; font-size: 0.9em; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
-    .tab-btn { display: flex; align-items: center; padding: 12px 20px; color: var(--text); cursor: pointer; transition: all 0.3s; border-left: 4px solid transparent; }
-    .tab-btn i { margin-right: 10px; width: 20px; text-align: center; }
-    .tab-btn:hover { background: rgba(239, 68, 68, 0.1); color: white; }
-    .tab-btn.active { background: rgba(239, 68, 68, 0.2); border-left: 4px solid var(--accent); color: white; font-weight: bold; }
-
-    .main { flex: 1; padding: 20px; overflow-y: auto; }
-    .content-panel { display: none; background: var(--panel); border: 2px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
-    .content-panel.active { display: block; animation: fadeIn 0.5s; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-    h2 { font-family: 'Orbitron', sans-serif; margin-bottom: 15px; font-size: 1.5em; display: flex; align-items: center; }
-    h2 i { margin-right: 10px; color: var(--accent); }
-
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
-    @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } }
-    input, select, button, textarea { width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: inherit; }
-    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 10px rgba(239, 68, 68, 0.5); }
-    button { background: var(--accent); color: white; font-weight: bold; cursor: pointer; transition: all 75ms; }
-    button:hover { background: var(--hover); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4); }
-    button:disabled { background: #333; cursor: not-allowed; }
-
-    #logs, .result { background: #1a1a1a; border: 1px solid var(--border); border-radius: 8px; padding: 10px; font-size: 0.9em; margin-top: 15px; max-height: 300px; overflow-y: auto; }
-    .log-entry, .friend-item { margin: 5px 0; padding: 8px; background: #222; border-radius: 6px; }
-    .status { padding: 3px 8px; border-radius: 4px; font-size: 0.8em; font-weight: bold; }
-    .online { background: var(--success); color: black; }
-    .offline { background: #666; color: white; }
-
-    .progress-bar { height: 20px; background: #333; border-radius: 10px; overflow: hidden; margin: 10px 0; }
-    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), #ff0066); width: 0%; transition: width 0.3s; }
-
-    .footer { text-align: center; margin-top: 30px; color: var(--text-dim); font-size: 0.8em; }
-  </style>
+  <title>XBOX SPAMMER PRO v3.0</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
+  {INLINE_CSS}
 </head>
 <body>
-  <canvas id="matrix"></canvas>
+  {INLINE_MATRIX_JS}
+  <div class="container">
+    <h1 data-text="XBOX SPAMMER PRO v3.0">XBOX SPAMMER PRO v3.0</h1>
 
-  <!-- LEFT SIDEBAR -->
-  <div class="sidebar">
-    <div class="logo">XBOX API PRO</div>
-
-    <div class="tab-group">
-      <h3>CORE</h3>
-      <div class="tab-btn active" data-tab="spam"><i class="fas fa-comment-dots"></i> Spam</div>
-      <div class="tab-btn" data-tab="friends"><i class="fas fa-users"></i> Friends</div>
-      <div class="tab-btn" data-tab="presence"><i class="fas fa-circle-dot"></i> Presence</div>
-      <div class="tab-btn" data-tab="search"><i class="fas fa-search"></i> Search</div>
-      <div class="tab-btn" data-tab="profile"><i class="fas fa-user"></i> Profile</div>
+    <!-- TAB NAV -->
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="message">💬 Message Spam</button>
+      <button class="tab-btn" data-tab="party">🪅 Party Invite</button>
+      <button class="tab-btn" data-tab="friend">👥 Friend Request</button>
+      <button class="tab-btn" data-tab="presence">👁️ Presence Poll</button>
+      <button class="tab-btn" data-tab="stats">📊 Stats Viewer</button>
+      <button class="tab-btn" data-tab="nuke">💣 Nuke Mode</button>
     </div>
 
-    <div class="tab-group">
-      <h3>ACHIEVEMENTS</h3>
-      <div class="tab-btn" data-tab="achievements"><i class="fas fa-trophy"></i> My Achievements</div>
-      <div class="tab-btn" data-tab="achievements-player"><i class="fas fa-medal"></i> Player Achievements</div>
+    <!-- MESSAGE TAB -->
+    <div id="message" class="tab-content active">
+      <form id="message-form">
+        <input type="password" name="auth_key" placeholder="🔑 xbl.io API Key" required>
+        <input type="text" name="gamertag" placeholder="🎮 Target Gamertag" required>
+        <select id="preset-select" class="preset-select">
+          <option value="">Custom Message</option>
+          <option value="roast">Roast Kit</option>
+          <option value="troll">Troll Pack</option>
+          <option value="ez">EZ Mode</option>
+        </select>
+        <input type="text" name="message" placeholder="💬 Spam Text" value="GG EZ">
+        <label>Delay: <input type="range" id="delay-slider" name="delay" min="0.5" max="5" step="0.1" value="1.3"></label>
+        <span id="delay-value">1.3s</span>
+        <input type="number" name="amount" placeholder="🔢 Amount (0=∞)" min="0" value="50">
+        <button type="submit" id="start-btn">🚀 NUKE 'EM</button>
+      </form>
     </div>
 
-    <div class="tab-group">
-      <h3>MEDIA</h3>
-      <div class="tab-btn" data-tab="screenshots"><i class="fas fa-image"></i> Screenshots</div>
-      <div class="tab-btn" data-tab="clips"><i class="fas fa-video"></i> Game Clips</div>
+    <!-- PARTY TAB -->
+    <div id="party" class="tab-content">
+      <form id="party-form" class="party-form">
+        <input type="password" name="auth_key" placeholder="🔑 API Key (reuse)">
+        <input type="text" name="gamertag" placeholder="🎮 Target">
+        <label>Invite Delay: <input type="range" name="party_delay" min="0.5" max="5" step="0.1" value="2.0"></label>
+        <span id="party-delay-value">2.0s</span>
+        <input type="number" name="party_amount" placeholder="🔢 Invites (0=∞)" min="0" value="10">
+        <button type="submit">🎉 RAID PARTY</button>
+      </form>
     </div>
 
-    <div class="tab-group">
-      <h3>SOCIAL</h3>
-      <div class="tab-btn" data-tab="activity"><i class="fas fa-rss"></i> Activity Feed</div>
-      <div class="tab-btn" data-tab="clubs"><i class="fas fa-flag"></i> Clubs</div>
-      <div class="tab-btn" data-tab="messages"><i class="fas fa-envelope"></i> Messages</div>
+    <!-- FRIEND TAB -->
+    <div id="friend" class="tab-content">
+      <form id="friend-form" class="friend-form">
+        <input type="password" name="auth_key" placeholder="🔑 API Key">
+        <input type="text" name="gamertag" placeholder="🎮 Target to Friend-Bomb">
+        <label>Request Delay: <input type="range" name="friend_delay" min="1" max="10" step="0.5" value="3"></label>
+        <input type="number" name="friend_amount" placeholder="🔢 Requests (0=∞)" min="0" value="20">
+        <button type="submit">👥 FRIEND FLOOD</button>
+      </form>
     </div>
-  </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="main">
-    <!-- SPAM -->
-    <div id="spam" class="content-panel active">
-      <h2><i class="fas fa-paper-plane"></i> Message Spammer</h2>
-      <div class="form-grid">
-        <input type="password" id="auth-key" placeholder="API Key" required>
-        <button id="load-friends">Load Friends</button>
-        <select id="target-select"><option value="">Select Target</option></select>
-        <input type="text" id="gamertag" placeholder="Gamertag (e.g., GUNz#7981)">
-        <input type="text" id="message" placeholder="Base Message" value="GG EZ">
-        <label><input type="checkbox" id="random-mode"> Random Mode</label>
-        <input type="range" id="delay" min="0.5" max="5" step="0.1" value="1.3">
-        <span>Delay: <span id="delay-value">1.3s</span></span>
-        <input type="number" id="amount" placeholder="Amount (0 = ∞)" value="50">
-        <button id="start-spam">START SPAM</button>
-        <button id="stop-spam" style="display:none;">STOP</button>
+    <!-- PRESENCE TAB -->
+    <div id="presence" class="tab-content">
+      <form id="presence-form" class="presence-form">
+        <input type="password" name="auth_key" placeholder="🔑 API Key">
+        <input type="text" name="gamertag" placeholder="🎮 Stalk Target">
+        <input type="number" name="poll_interval" placeholder="Poll every Xs" value="30" min="10">
+        <button type="submit">👁️ LIVE STALK MODE</button>
+      </form>
+    </div>
+
+    <!-- STATS TAB -->
+    <div id="stats" class="tab-content">
+      <form id="stats-form" class="stats-form">
+        <input type="password" name="auth_key" placeholder="🔑 API Key">
+        <input type="text" name="gamertag" placeholder="🎮 Pull Stats">
+        <button type="submit">📊 FETCH K/D ROAST</button>
+      </form>
+    </div>
+
+    <!-- NUKE TAB -->
+    <div id="nuke" class="tab-content">
+      <form id="nuke-form" class="nuke-form">
+        <input type="password" name="auth_key" placeholder="🔑 API Key">
+        <input type="text" name="gamertag" placeholder="🎮 TOTAL NUKE TARGET">
+        <input type="number" name="nuke_duration" placeholder="Nuke for Xs" value="60" min="30">
+        <button type="submit">💣 FULL NUKE (ALL MODS)</button>
+      </form>
+    </div>
+
+    <button type="button" id="stop-btn" style="display: none; width: 100%; margin: 10px 0;">🛑 ABORT MISSION</button>
+
+    <div id="progress">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px;">
+        <span>NUKE Progress</span>
+        <span id="progress-text">0%</span>
       </div>
-      <div class="progress-bar"><div class="progress-fill" id="spam-progress"></div></div>
-      <div id="spam-logs"></div>
+      <div id="progress-bar"><div id="progress-fill"></div></div>
+      <p id="cooldown-row" style="text-align: center; margin-top: 10px; font-size: 12px; display: none;">
+        ⏰ Cooldown: <span id="cooldown">0</span>s
+      </p>
     </div>
-
-    <!-- FRIENDS -->
-    <div id="friends" class="content-panel">
-      <h2><i class="fas fa-users"></i> Friends List</h2>
-      <button id="refresh-friends">Refresh</button>
-      <div id="friends-list"></div>
-    </div>
-
-    <!-- PRESENCE -->
-    <div id="presence" class="content-panel">
-      <h2><i class="fas fa-circle-dot"></i> Friend Presence</h2>
-      <button id="refresh-presence">Refresh</button>
-      <div id="presence-list"></div>
-    </div>
-
-    <!-- SEARCH -->
-    <div id="search" class="content-panel">
-      <h2><i class="fas fa-search"></i> Player Search</h2>
-      <input type="text" id="search-gt" placeholder="Gamertag">
-      <button id="do-search">Search</button>
-      <div id="search-result" class="result"></div>
-    </div>
-
-    <!-- PROFILE -->
-    <div id="profile" class="content-panel">
-      <h2><i class="fas fa-user"></i> My Profile</h2>
-      <button id="load-profile">Load</button>
-      <div id="profile-result" class="result"></div>
-    </div>
-
-    <!-- ACHIEVEMENTS -->
-    <div id="achievements" class="content-panel">
-      <h2><i class="fas fa-trophy"></i> My Achievements</h2>
-      <button id="load-achievements">Load</button>
-      <div id="achievements-list"></div>
-    </div>
-
-    <!-- PLAYER ACHIEVEMENTS -->
-    <div id="achievements-player" class="content-panel">
-      <h2><i class="fas fa-medal"></i> Player Achievements</h2>
-      <input type="text" id="ach-player-gt" placeholder="Gamertag">
-      <button id="load-player-ach">Load</button>
-      <div id="player-ach-list"></div>
-    </div>
-
-    <!-- SCREENSHOTS -->
-    <div id="screenshots" class="content-panel">
-      <h2><i class="fas fa-image"></i> Screenshots</h2>
-      <button id="load-screenshots">Load</button>
-      <div id="screenshots-grid"></div>
-    </div>
-
-    <!-- CLIPS -->
-    <div id="clips" class="content-panel">
-      <h2><i class="fas fa-video"></i> Game Clips</h2>
-      <button id="load-clips">Load</button>
-      <div id="clips-grid"></div>
-    </div>
-
-    <!-- ACTIVITY -->
-    <div id="activity" class="content-panel">
-      <h2><i class="fas fa-rss"></i> Activity Feed</h2>
-      <button id="load-activity">Load</button>
-      <div id="activity-feed"></div>
-    </div>
-
-    <!-- CLUBS -->
-    <div id="clubs" class="content-panel">
-      <h2><i class="fas fa-flag"></i> My Clubs</h2>
-      <button id="load-clubs">Load</button>
-      <div id="clubs-list"></div>
-    </div>
-
-    <!-- MESSAGES -->
-    <div id="messages" class="content-panel">
-      <h2><i class="fas fa-envelope"></i> Messages</h2>
-      <button id="load-messages">Load</button>
-      <div id="messages-list"></div>
-    </div>
+    <div id="logs"></div>
+    <p class="footer">⚡ xbl.io Powered | Konami Code for Easter Eggs | Don't Cry When Banned</p>
   </div>
-
-  <script>
-    // Matrix rain (unchanged)
-    const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-    window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
-    const matrix = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}';
-    const fontSize = 14; let columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
-    function draw() {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#ef4444'; ctx.font = fontSize + 'px monospace';
-      for (let i = 0; i < drops.length; i++) {
-        const text = matrix[Math.floor(Math.random() * matrix.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
-      }
-    }
-    setInterval(draw, 50);
-
-    // Tab switching
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.content-panel').forEach(p => p.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.tab).classList.add('active');
-      });
-    });
-
-    // Delay slider
-    const delaySlider = document.getElementById('delay');
-    const delayValue = document.getElementById('delay-value');
-    delaySlider.addEventListener('input', () => { delayValue.textContent = delaySlider.value + 's'; });
-
-    // Global API call
-    let running = false;
-    async function apiCall(method, endpoint, data = {}) {
-      const key = document.getElementById('auth-key')?.value || localStorage.getItem('api_key') || prompt('Enter API Key:');
-      if (!key) return { error: 'No API key' };
-      localStorage.setItem('api_key', key);
-      const res = await fetch(`/api${endpoint}`, {
-        method, headers: { 'Content-Type': 'application/json' },
-        body: method === 'POST' ? JSON.stringify({ ...data, auth_key: key }) : null
-      });
-      return await res.json();
-    }
-
-    // SPAM
-    document.getElementById('load-friends').addEventListener('click', async () => {
-      const data = await apiCall('POST', '/friends');
-      if (data.error) return alert(data.error);
-      const select = document.getElementById('target-select');
-      select.innerHTML = '<option value="">Select Friend</option>';
-      data.friends.forEach(f => {
-        const opt = document.createElement('option');
-        opt.value = f.gamertag; opt.textContent = `${f.gamertag} (${f.presence})`;
-        select.appendChild(opt);
-      });
-      select.addEventListener('change', () => { document.getElementById('gamertag').value = select.value; });
-    });
-
-    document.getElementById('start-spam').addEventListener('click', async () => {
-      if (running) return;
-      running = true;
-      document.getElementById('start-spam').disabled = true;
-      document.getElementById('stop-spam').style.display = 'block';
-      document.getElementById('spam-logs').innerHTML = '';
-      document.getElementById('spam-progress').style.width = '0%';
-
-      const payload = {
-        gamertag: document.getElementById('gamertag').value,
-        message: document.getElementById('message').value,
-        amount: parseInt(document.getElementById('amount').value) || 0,
-        delay: parseFloat(document.getElementById('delay').value),
-        random_mode: document.getElementById('random-mode').checked
-      };
-
-      const res = await apiCall('POST', '/spam/start', payload);
-      if (res.error) { alert(res.error); running = false; return; }
-
-      const poll = setInterval(async () => {
-        const status = await apiCall('GET', '/spam/status');
-        if (!status.active) { clearInterval(poll); running = false; document.getElementById('start-spam').disabled = false; document.getElementById('stop-spam').style.display = 'none'; }
-        document.getElementById('spam-progress').style.width = status.progress + '%';
-        document.getElementById('spam-logs').innerHTML = status.logs.map(l => `<div class="log-entry">${l}</div>`).join('');
-        document.getElementById('spam-logs').scrollTop = document.getElementById('spam-logs').scrollHeight;
-      }, 1000);
-    });
-
-    document.getElementById('stop-spam').addEventListener('click', async () => {
-      await apiCall('POST', '/spam/stop');
-    });
-
-    // OTHER TABS
-    document.getElementById('refresh-friends').addEventListener('click', async () => {
-      const data = await apiCall('POST', '/friends');
-      const list = document.getElementById('friends-list');
-      list.innerHTML = data.friends.map(f => `<div class="friend-item">${f.gamertag} <span class="status ${f.presence}">${f.presence}</span></div>`).join('');
-    });
-
-    document.getElementById('refresh-presence').addEventListener('click', async () => {
-      const data = await apiCall('POST', '/presence');
-      const list = document.getElementById('presence-list');
-      list.innerHTML = data.people.map(p => `<div class="friend-item">${p.gamertag || p.xuid} <span class="status ${p.state}">${p.state}</span></div>`).join('');
-    });
-
-    document.getElementById('do-search').addEventListener('click', async () => {
-      const gt = document.getElementById('search-gt').value;
-      const data = await apiCall('POST', '/search', { gamertag: gt });
-      const result = document.getElementById('search-result');
-      result.innerHTML = data.people ? data.people.map(p => `<div>${p.gamertag} (XUID: ${p.xuid})</div>`).join('') : data.error;
-    });
-
-    document.getElementById('load-profile').addEventListener('click', async () => {
-      const data = await apiCall('POST', '/profile');
-      const result = document.getElementById('profile-result');
-      result.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
-    });
-
-    // Add more event listeners for other tabs...
-  </script>
-  <div class="footer">xbl.io Full Dashboard | All Tabs | Friends Fixed | 100+ Endpoints</div>
+  {INLINE_APP_JS}
 </body>
 </html>
